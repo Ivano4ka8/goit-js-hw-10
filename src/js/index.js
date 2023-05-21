@@ -26,7 +26,7 @@ function onInput() {
   if (!countryName.trim()) {
     listEl.innerHTML = '';
     infoEl.innerHTML = '';
-    Notiflix.Notify.info('Рядок не повинен бути пустим');
+    Notiflix.Notify.info('The string must not be empty');
     return;
   }
 
@@ -72,12 +72,16 @@ function createMarkupList(countries) {
 function createMarkupInfo(countries) {
   const markup = countries
     .map(({ flags, name, capital, population, languages }) => {
-      return `<div class = "main-wrapper"><img class = "flag-img" src = ${flags?.svg}> 
+      return `<div class = "main-wrapper"><img class = "flag-img" src = ${
+        flags?.svg
+      }> 
       <h2 class = "info-country-name">${name?.official}</h2>
       </div>
       <p class = "info-text"><b class = "info-title">Capital:</b>${capital}</p>
       <p class = "info-text"><b class = "info-title">Population:</b>${population}</p>
-      <p class = "info-text"><b class = "info-title">Languages:</b>${Object.values(languages)}</p>`;
+      <p class = "info-text"><b class = "info-title">Languages:</b>${Object.values(
+        languages
+      )}</p>`;
     })
     .join('');
 

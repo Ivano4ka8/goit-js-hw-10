@@ -33,7 +33,12 @@ function onInput() {
   fetchCountries(countryName.trim())
     .then(onSuccess)
     .catch(error => {
-      Notiflix.Notify.warning('Oops, there is no country with that name');
+      if (error.message === '404') {
+        listEl.innerHTML = '';
+        infoEl.innerHTML = '';
+        Notiflix.Notify.warning('Oops, there is no country with that name');
+      }
+      console.log(error);
     });
 }
 
